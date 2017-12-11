@@ -1,0 +1,150 @@
+A. create database
+------------------
+create database retail;
+
+
+this creates a folder by the name of retail.db under /user/hive/warehouse
+
+
+A1. show all the databases in hive
+----------------------------------
+show databases;
+
+
+B. Select a database
+--------------------
+use retail;
+
+
+B1. Show tables under the database
+----------------------------------
+show tables;
+
+
+C1. Create transaction table
+-------------------------------
+create table txnrecords(txnno INT, txndate STRING, custno INT, amount DOUBLE, 
+category STRING, product STRING, city STRING, state STRING, spendby STRING)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+
+C2. Create customer table
+-------------------------------
+create table customer(custno INT, firstname STRING, lastname STRING, age INT, profession STRING)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+
+ 
+D1. Load the data into the table (from local file system)
+-----------------------------------------------------
+LOAD DATA LOCAL INPATH '/home/hduser/txns1.txt' OVERWRITE INTO TABLE txnrecords;
+
+LOAD DATA LOCAL INPATH '/home/hduser/custs' OVERWRITE INTO TABLE customer;
+
+LOAD DATA LOCAL INPATH '/home/hduser/custs_add' INTO TABLE customer;
+
+
+
+to save the file on hdfs
+-------------------------
+INSERT OVERWRITE DIRECTORY '/Hive/CustomerTrans/CustCount' row format delimited fields terminated by ',' 
+select profession, count(*) from customer group by profession;
+
+
+N1. how do i know i am in which database currently
+--------------------------------------------------
+set hive.cli.print.current.db=true;
+
+
+N2. how do i print my headers of my table
+-------------------------------------
+set hive.cli.print.header=true;
+
+
+N3.check the detailed desc about table
+-------------------------------------
+desc formatted customer;
+
+
+
+create table nyse and load
+-----------------------------
+
+create table nyse(
+exchange_name string,
+stock_id string,
+stock_date date,
+open double,
+high double,
+low double,
+close double,
+volume bigint,
+adj_close double)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+
+upload data on hdfs
+-------------------
+LOAD DATA LOCAL INPATH '/home/hduser/NYSE.csv' OVERWRITE INTO TABLE nyse;
+
+
+Queries
+--------
+1.Count the number of records in nyse.csv.
+Ans:-
+INSERT OVERWRITE DIRECTORY '/Hive/NYSE/StockCount' row format delimited fields terminated by ',' 
+select count(*) from nyse;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Find the top 10 total stock volume for each stock.. order it on highest vol wise
+Ans:- 
+INSERT OVERWRITE DIRECTORY '/Hive/NYSE/StockHighVol' row format delimited fields terminated by ',' 
+select sum(volume) as Vol, stock_id from nyse group by stock_id order by Vol desc;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.Find the top5 max variance in a desc order and save o/p in hdfs
+Ans:- 
+It will save output in hdfs
+INSERT OVERWRITE DIRECTORY '/Hive/NYSE/Top5Variance' row format delimited fields terminated by ',' 
+select stock_id, round(max((high-low)/low*100),2) as maxvar from nyse group by stock_id order by maxvar desc limit 5;
+
+It will save output in local system
+INSERT OVERWRITE local DIRECTORY '/home/hduser/top5variance' row format delimited fields terminated by ',' 
+select stock_id, round(max((high-low)/low*100),2) as maxvar from nyse group by stock_id order by maxvar desc limit 5;
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Que.Find top 10 customers from sales data who have done maximum purchases and save it on hdfs.
+Ans:- 
+
+INSERT OVERWRITE DIRECTORY '/Hive/CustomerTrans/Top10Customer' row format delimited fields terminated by ',' 
+select a.custno, firstname, lastname, age, profession, round(sum(amount), 2) as total from txnrecords a join customer b on (a.custno = b.custno) group by a.custno,firstname, lastname, age, profession order by total desc limit 10;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+select custno, count(*) as custcount from txnrecords group by custno order by custcount desc limit 10;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+select custno, round(sum(amount), 2) as total, count(*) as custcount from txnrecords group by custno order by total desc limit 10;
+
+
+=======================================================================================================================================================
+
+
+
+
+
+
