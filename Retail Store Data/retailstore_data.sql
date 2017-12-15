@@ -186,70 +186,70 @@ row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profa
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="A" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="A"  order by totalsales desc limit 5;
 
 create table table_profb (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profb
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="B" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="B"  order by totalsales desc limit 5;
 
 create table table_profc (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profc
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="C" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="C"  order by totalsales desc limit 5;
 
 create table table_profd (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profd
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="D" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="D"  order by totalsales desc limit 5;
 
 create table table_profe (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profe
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="E" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="E"  order by totalsales desc limit 5;
 
 create table table_proff (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_proff
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="F" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="F"  order by totalsales desc limit 5;
 
 create table table_profg (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profg
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="G" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="G"  order by totalsales desc limit 5;
 
 create table table_profh (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profh
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="H" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="H"  order by totalsales desc limit 5;
 
 create table table_profi (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profi
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="I" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="I"  order by totalsales desc limit 5;
 
 create table table_profj (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profj
-select productid,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,productid having trim(age)="J" order by totalsales desc limit 5;
+select age, productid, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="J"  order by totalsales desc limit 5;
 
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5ViableProductsAgeWise' row format delimited fields terminated by ',' 
@@ -284,70 +284,70 @@ row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profca
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="A" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="A"  order by totalsales desc limit 5;
 
 create table table_profcb (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcb
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="B" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="B"  order by totalsales desc limit 5;
 
 create table table_profcc (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcc
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="C" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="C"  order by totalsales desc limit 5;
 
 create table table_profcd (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcd
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="D" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="D"  order by totalsales desc limit 5;
 
 create table table_profce (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profce
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="E" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="E"  order by totalsales desc limit 5;
 
 create table table_profcf (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcf
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="F" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="F"  order by totalsales desc limit 5;
 
 create table table_profcg (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcg
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="G" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="G"  order by totalsales desc limit 5;
 
 create table table_profch (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profch
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="H" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="H"  order by totalsales desc limit 5;
 
 create table table_profci (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profci
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="I" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="I"  order by totalsales desc limit 5;
 
 create table table_profcj (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_profcj
-select category,age,sum(sales-cost) as totalsales from retailstore1 where (sales-cost)>0 group by age,category having trim(age)="J" order by totalsales desc limit 5;
+select age, category, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="J"  order by totalsales desc limit 5;
 
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5ViableCategoriesAgeWise' row format delimited fields terminated by ',' 
@@ -388,70 +388,70 @@ row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspa
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="A" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="A"  order by totalsales desc limit 5;
 
 create table table_losspb (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspb
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="B" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="B"  order by totalsales desc limit 5;
 
 create table table_losspc (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspc
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="C" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="C"  order by totalsales desc limit 5;
 
 create table table_losspd (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspd
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="D" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="D"  order by totalsales desc limit 5;
 
 create table table_losspe (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspe
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="E" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="E"  order by totalsales desc limit 5;
 
 create table table_losspf (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspf
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="F" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="F"  order by totalsales desc limit 5;
 
 create table table_losspg (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspg
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="G" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="G"  order by totalsales desc limit 5;
 
 create table table_lossph (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_lossph
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="H" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="H"  order by totalsales desc limit 5;
 
 create table table_losspi (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspi
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="I" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="I"  order by totalsales desc limit 5;
 
 create table table_losspj (productid string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losspj
-select productid,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,productid having trim(age)="J" order by totalsales desc limit 5;
+select age, productid, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="J"  order by totalsales desc limit 5;
 
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5LossByProductsAgeWise' row format delimited fields terminated by ',' 
@@ -488,71 +488,70 @@ row format delimited
 fields terminated by ',';
 
 insert overwrite table table_lossca
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="A" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="A"  order by totalsales desc limit 5;
 
 create table table_losscb (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscb
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="B" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="B"  order by totalsales desc limit 5;
 
 create table table_losscc (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscc
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="C" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="C"  order by totalsales desc limit 5;
 
 create table table_losscd (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscd
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="D" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="D"  order by totalsales desc limit 5;
 
 create table table_lossce (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_lossce
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="E" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="E"  order by totalsales desc limit 5;
 
 create table table_losscf (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscf
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="F" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="F"  order by totalsales desc limit 5;
 
 create table table_losscg (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscg
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="G" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="G"  order by totalsales desc limit 5;
 
 create table table_lossch (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_lossch
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="H" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="H"  order by totalsales desc limit 5;
 
 create table table_lossci (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table_lossci
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="I" order by totalsales desc limit 5;
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="I"  order by totalsales desc limit 5;
 
 create table table_losscj (category string, age string, totalsales bigint) 
 row format delimited
 fields terminated by ',';
 
 insert overwrite table table_losscj
-select category,age,sum(cost-sales) as totalsales from retailstore1 where (cost-sales)>0 group by age,category having trim(age)="J" order by totalsales desc limit 5;
-
+select age, category, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="J"  order by totalsales desc limit 5;
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5LossByCategoriesAgeWise' row format delimited fields terminated by ',' 
 select * from(
