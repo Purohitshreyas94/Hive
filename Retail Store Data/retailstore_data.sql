@@ -251,6 +251,14 @@ fields terminated by ',';
 insert overwrite table table_profj
 select productid,age, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="J"  order by totalsales desc limit 5;
 
+create table table_profk (productid string, age string, totalsales bigint) 
+row format delimited
+fields terminated by ',';
+
+insert overwrite table table_profk
+select productid,age, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, productid having trim(age)="K"  order by totalsales desc limit 5;
+
+
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5ViableProductsAgeWise' row format delimited fields terminated by ',' 
 select * from(
@@ -272,7 +280,9 @@ select productid,age,totalsales from table_profh
 UNION
 select productid,age,totalsales from table_profi
 UNION
-select productid,age,totalsales from table_profj) top5viableproduct
+select productid,age,totalsales from table_profj
+UNION
+select productid,age,totalsales from table_profk) top5viableproduct
 order by age,totalsales desc; 
 
 
@@ -349,6 +359,13 @@ fields terminated by ',';
 insert overwrite table table_profcj
 select category,age, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="J"  order by totalsales desc limit 5;
 
+create table table_profck (category string, age string, totalsales bigint) 
+row format delimited
+fields terminated by ',';
+
+insert overwrite table table_profck
+select category,age, (sum(sales)-sum(cost)) as totalsales from retailstore1 group by age, category having trim(age)="K"  order by totalsales desc limit 5;
+
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5ViableCategoriesAgeWise' row format delimited fields terminated by ',' 
 select * from(
@@ -370,7 +387,9 @@ select category,age,totalsales from table_profch
 UNION
 select category,age,totalsales from table_profci
 UNION
-select category,age,totalsales from table_profcj) top5viablepcategory
+select category,age,totalsales from table_profcj
+UNION
+select category,age,totalsales from table_profck) top5viablepcategory
 order by age,totalsales desc; 
 
 
@@ -453,6 +472,13 @@ fields terminated by ',';
 insert overwrite table table_losspj
 select productid,age, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="J"  order by totalsales desc limit 5;
 
+create table table_losspk (productid string, age string, totalsales bigint) 
+row format delimited
+fields terminated by ',';
+
+insert overwrite table table_losspk
+select productid,age, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, productid having trim(age)="K"  order by totalsales desc limit 5;
+
 
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5LossByProductsAgeWise' row format delimited fields terminated by ',' 
 select * from(
@@ -474,7 +500,9 @@ select productid,age,totalsales from table_lossph
 UNION
 select productid,age,totalsales from table_losspi
 UNION
-select productid,age,totalsales from table_losspj) top5lossbyproduct
+select productid,age,totalsales from table_losspj
+UNION
+select productid,age,totalsales from table_losspk) top5lossbyproduct
 order by age,totalsales desc; 
 
 
@@ -553,6 +581,13 @@ fields terminated by ',';
 insert overwrite table table_losscj
 select category,age, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="J"  order by totalsales desc limit 5;
 
+create table table_lossck (category string, age string, totalsales bigint) 
+row format delimited
+fields terminated by ',';
+
+insert overwrite table table_lossck
+select category,age, (sum(cost)-sum(sales)) as totalsales from retailstore1 group by age, category having trim(age)="K"  order by totalsales desc limit 5;
+
 INSERT OVERWRITE DIRECTORY '/Hive/retail/Top5LossByCategoriesAgeWise' row format delimited fields terminated by ',' 
 select * from(
 select category,age,totalsales from table_lossca
@@ -573,7 +608,9 @@ select category,age,totalsales from table_lossch
 UNION
 select category,age,totalsales from table_lossci
 UNION
-select category,age,totalsales from table_losscj) top5lossbycategory
+select category,age,totalsales from table_losscj
+UNION
+select category,age,totalsales from table_lossck) top5lossbycategory
 order by age,totalsales desc; 
 
 
