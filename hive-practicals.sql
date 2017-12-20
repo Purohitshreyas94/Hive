@@ -525,9 +525,9 @@ CREATE TABLE tweets
      'org.apache.hadoop.hive.ql.io.avro.AvroContainerInputFormat'
   OUTPUTFORMAT
      'org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat'
-  TBLPROPERTIES ('avro.schema.url'='file:/home/hduser/intel.avsc') ;
+  TBLPROPERTIES ('avro.schema.url'='file:/home/hduser/mytwitter.avsc') ;
 
-LOAD DATA Local INPATH '/home/hduser/FlumeData.1504749217753' OVERWRITE INTO TABLE tweets;
+LOAD DATA Local INPATH '/home/hduser/FlumeData.1513764545277' OVERWRITE INTO TABLE tweets;
 
 
 
